@@ -2,53 +2,9 @@
   <h2>Generate Fishing Ticket</h2>
   <form [formGroup]="fishingTicketForm" (ngSubmit)="onSubmit()">
 
-    <!-- Personal Data Section -->
-    <fieldset class="form-section">
-      <legend>Personal Data</legend>
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input id="name" type="text" formControlName="name" placeholder="John Doe">
-          <div *ngIf="fishingTicketForm.get('name')?.invalid && (fishingTicketForm.get('name')?.dirty || fishingTicketForm.get('name')?.touched)" class="error-message">
-            Full Name is required.
-          </div>
-        </div>
+    <app-personal-data-form [personalDataGroup]="personalDataGroup"></app-personal-data-form>
 
-        <div class="form-group">
-          <label for="egn">EGN (Bulgarian Personal ID)</label>
-          <input id="egn" type="text" formControlName="egn" placeholder="XXXXXXXXXX">
-          <div *ngIf="fishingTicketForm.get('egn')?.invalid && (fishingTicketForm.get('egn')?.dirty || fishingTicketForm.get('egn')?.touched)" class="error-message">
-            EGN is required and must be 10 digits.
-          </div>
-        </div>
 
-        <div class="form-group">
-          <label for="idCardNumber">ID Card Number</label>
-          <input id="idCardNumber" type="text" formControlName="idCardNumber" placeholder="ABC123456">
-          <div *ngIf="fishingTicketForm.get('idCardNumber')?.invalid && (fishingTicketForm.get('idCardNumber')?.dirty || fishingTicketForm.get('idCardNumber')?.touched)" class="error-message">
-            ID Card Number is required (e.g., 9 alphanumeric chars).
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="phoneNumber">Phone Number</label>
-          <input id="phoneNumber" type="tel" formControlName="phoneNumber" placeholder="+359XXXXXXXX">
-          <div *ngIf="fishingTicketForm.get('phoneNumber')?.invalid && (fishingTicketForm.get('phoneNumber')?.dirty || fishingTicketForm.get('phoneNumber')?.touched)" class="error-message">
-            Phone Number is required (e.g., +359XXXXXXXX).
-          </div>
-        </div>
-
-        <div class="form-group full-width">
-          <label for="email">Email Address</label>
-          <input id="email" type="email" formControlName="email" placeholder="john.doe@example.com">
-          <div *ngIf="fishingTicketForm.get('email')?.invalid && (fishingTicketForm.get('email')?.dirty || fishingTicketForm.get('email')?.touched)" class="error-message">
-            Valid Email is required.
-          </div>
-        </div>
-      </div>
-    </fieldset>
-
-    <!-- Ticket Details Section -->
     <fieldset class="form-section">
       <legend>Ticket Details</legend>
       <div class="form-grid">
@@ -74,51 +30,8 @@
       </div>
     </fieldset>
 
-    <!-- Address Section -->
-    <fieldset class="form-section">
-      <legend>Address</legend>
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="country">Country</label>
-          <input id="country" type="text" formControlName="country" placeholder="Bulgaria">
-          <div *ngIf="fishingTicketForm.get('country')?.invalid && (fishingTicketForm.get('country')?.dirty || fishingTicketForm.get('country')?.touched)" class="error-message">
-            Country is required.
-          </div>
-        </div>
 
-        <div class="form-group">
-          <label for="region">Region</label>
-          <input id="region" type="text" formControlName="region" placeholder="Sofia Region">
-          <div *ngIf="fishingTicketForm.get('region')?.invalid && (fishingTicketForm.get('region')?.dirty || fishingTicketForm.get('region')?.touched)" class="error-message">
-            Region is required.
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="municipality">Municipality</label>
-          <input id="municipality" type="text" formControlName="municipality" placeholder="Sofia Municipality">
-          <div *ngIf="fishingTicketForm.get('municipality')?.invalid && (fishingTicketForm.get('municipality')?.dirty || fishingTicketForm.get('municipality')?.touched)" class="error-message">
-            Municipality is required.
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="city">City</label>
-          <input id="city" type="text" formControlName="city" placeholder="Sofia">
-          <div *ngIf="fishingTicketForm.get('city')?.invalid && (fishingTicketForm.get('city')?.dirty || fishingTicketForm.get('city')?.touched)" class="error-message">
-            City is required.
-          </div>
-        </div>
-
-        <div class="form-group full-width">
-          <label for="street">Street</label>
-          <input id="street" type="text" formControlName="street" placeholder="Vitosha Blvd. 10">
-          <div *ngIf="fishingTicketForm.get('street')?.invalid && (fishingTicketForm.get('street')?.dirty || fishingTicketForm.get('street')?.touched)" class="error-message">
-            Street is required.
-          </div>
-        </div>
-      </div>
-    </fieldset>
+    <app-address-form [addressGroup]="addressGroup"></app-address-form>
 
     <div class="form-actions">
       <button type="submit" [disabled]="!fishingTicketForm.valid">Generate Ticket</button>

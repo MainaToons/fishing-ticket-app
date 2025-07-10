@@ -1,21 +1,3 @@
-.form-container {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 800px;
-  box-sizing: border-box;
-}
-
-h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 25px;
-  font-size: 2em;
-}
-
-/* These styles are now also used by the child components */
 .form-section {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -86,48 +68,4 @@ select:focus {
   color: #e74c3c;
   font-size: 0.85em;
   margin-top: 5px;
-}
-
-.form-actions {
-  display: flex;
-  gap: 15px;
-  margin-top: 25px;
-  justify-content: center;
-}
-
-button {
-  flex: 1;
-  max-width: 200px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-weight: bold;
-}
-
-button[type="submit"] {
-  background-color: #6a0dad;
-  color: white;
-}
-
-button[type="submit"]:hover:not([disabled]) {
-  background-color: #520a82;
-  transform: translateY(-2px);
-}
-
-button[type="submit"][disabled] {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-button[type="button"] {
-  background-color: #e0e0e0;
-  color: #333;
-}
-
-button[type="button"]:hover {
-  background-color: #d0d0d0;
-  transform: translateY(-2px);
 }

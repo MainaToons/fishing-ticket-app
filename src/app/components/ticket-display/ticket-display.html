@@ -4,11 +4,11 @@
       <h3>Fishing Ticket</h3>
       <div class="ticket-details-section">
         <h4>Personal Data</h4>
-        <p><strong>Name:</strong> <span>{{ ticket.name }}</span></p>
-        <p><strong>EGN:</strong> <span>{{ ticket.egn }}</span></p>
-        <p><strong>ID Card No.:</strong> <span>{{ ticket.idCardNumber }}</span></p>
-        <p><strong>Phone:</strong> <span>{{ ticket.phoneNumber }}</span></p>
-        <p><strong>Email:</strong> <span>{{ ticket.email }}</span></p>
+        <p><strong>Name:</strong> <span>{{ ticket.personalData.fullName }}</span></p>
+        <p><strong>EGN:</strong> <span>{{ ticket.personalData.egn }}</span></p>
+        <p><strong>ID Card No.:</strong> <span>{{ ticket.personalData.idCardNumber }}</span></p>
+        <p><strong>Phone:</strong> <span>{{ ticket.personalData.phoneNumber }}</span></p>
+        <p><strong>Email:</strong> <span>{{ ticket.personalData.email }}</span></p>
       </div>
 
       <div class="ticket-details-section">
@@ -19,13 +19,14 @@
 
       <div class="ticket-details-section">
         <h4>Address</h4>
-        <p><strong>Country:</strong> <span>{{ ticket.country }}</span></p>
-        <p><strong>Region:</strong> <span>{{ ticket.region }}</span></p>
-        <p><strong>Municipality:</strong> <span>{{ ticket.municipality }}</span></p>
-        <p><strong>City:</strong> <span>{{ ticket.city }}</span></p>
-        <p><strong>Street:</strong> <span>{{ ticket.street }}</span></p>
+        <p><strong>Country:</strong> <span>{{ ticket.address.country }}</span></p>
+        <p><strong>Region:</strong> <span>{{ ticket.address.region }}</span></p>
+        <p><strong>Municipality:</strong> <span>{{ ticket.address.municipality }}</span></p>
+        <p><strong>City:</strong> <span>{{ ticket.address.city }}</span></p>
+        <p><strong>Street:</strong> <span>{{ ticket.address.street }}</span></p>
       </div>
 
+      
       <p class="thanks-message">Happy Fishing!</p>
     </div>
   </ng-container>

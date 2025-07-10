@@ -7,10 +7,11 @@ import { Ticket } from './models/ticket.model';
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'fishing-ticket-app';
+  title = 'fishing-ticket-app';
   displayedTicket: Ticket | null = null;
 
   onTicketSubmitted(ticket: Ticket | null): void {
+    console.log('AppComponent: Received ticket:', ticket);
     this.displayedTicket = ticket;
   }
 }

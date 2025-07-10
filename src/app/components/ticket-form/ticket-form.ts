@@ -18,45 +18,80 @@ export class TicketForm implements OnInit {
 
   ngOnInit():void{
     this.fishingTicketForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      egn: new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]), // EGN is 10 digits
-      idCardNumber: new FormControl('', [Validators.required, Validators.pattern(/^[A-Z0-9]{9}$/)]), // Example: 9 alphanumeric chars
-      phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\+?\d{6,15}$/)]), // Basic phone validation
-      email: new FormControl('', [Validators.required, Validators.email]),
+      personalData: new FormGroup({
+        fullName: new FormControl('', Validators.required),
+        egn: new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]),
+        idCardNumber: new FormControl('', [Validators.required, Validators.pattern(/^[A-Z0-9]{9}$/i)]),
+        phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\+?\d{6,15}$/)]),
+        email: new FormControl('', [Validators.required, Validators.email]),
+      }),
 
-      // Ticket Details
+      address: new FormGroup({
+        country: new FormControl('', Validators.required),
+        region: new FormControl('', Validators.required),
+        municipality: new FormControl('', Validators.required),
+        city: new FormControl('', Validators.required),
+        street: new FormControl('', Validators.required)
+      }),
+
       validity: new FormControl(this.ticketValidities[0], Validators.required),
-      ticketType: new FormControl(this.ticketTypes[0], Validators.required),
-
-      // Address
-      country: new FormControl('', Validators.required),
-      region: new FormControl('', Validators.required),
-      municipality: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      street: new FormControl('', Validators.required)
+      ticketType: new FormControl(this.ticketTypes[0], Validators.required)
     });
   }
 
   onSubmit(): void{
-    if(this.fishingTicketForm.valid){
-      this.ticketSubmitted.emit(this.fishingTicketForm.value);
+    if (this.fishingTicketForm.valid) {
+      const submittedTicket: Ticket = this.fishingTicketForm.value;
+      console.log('TicketFormComponent: Emitting valid ticket:', submittedTicket);
+      this.ticketSubmitted.emit(submittedTicket);
     } else {
-      // Mark all fields as touched to display validation errors
       this.fishingTicketForm.markAllAsTouched();
-      // In a real app, you might use a custom modal instead of alert
-      console.error('Form is invalid. Please check all fields.');
-      alert('Please fill in all required fields correctly!');
+      this.markAllControlsAsTouched(this.fishingTicketForm);
+      console.error('TicketFormComponent: Form is invalid. Please check all fields.');
     }
   }
 
 
   onReset(): void {
+    console.log('TicketFormComponent: Resetting form and emitting null.');
     this.fishingTicketForm.reset({
+      personalData: {
+        fullName: '', egn: '', idCardNumber: '', phoneNumber: '', email: ''
+      },
+      address: {
+        country: '', region: '', municipality: '', city: '', street: ''
+      },
       validity: this.ticketValidities[0],
       ticketType: this.ticketTypes[0]
     });
-    // Emit null to clear the displayed ticket in the parent component
-    this.ticketSubmitted.emit(null as any);
+    this.ticketSubmitted.emit(null);
   }
-  
+
+  private markAllControlsAsTouched(formGroup: FormGroup): void {
+    Object.values(formGroup.controls).forEach(control => {
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.markAllControlsAsTouched(control);
+      }
+    });
+  }
+
+   public get personalDataGroup(): FormGroup {
+    const control = this.fishingTicketForm.get('personalData');
+    if (control instanceof FormGroup) {
+      return control;
+    }
+    console.warn('personalDataGroup is not a FormGroup or not found. Returning empty FormGroup.');
+    return new FormGroup({});
+  }
+
+  public get addressGroup(): FormGroup {
+    const control = this.fishingTicketForm.get('address');
+    if (control instanceof FormGroup) {
+      return control;
+    }
+    console.warn('addressGroup is not a FormGroup or not found. Returning empty FormGroup.');
+    return new FormGroup({});
+  }
 }
