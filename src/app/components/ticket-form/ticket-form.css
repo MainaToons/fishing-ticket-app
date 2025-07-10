@@ -1,0 +1,132 @@
+.form-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px; /* Increased max-width for more fields */
+  box-sizing: border-box;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 2em;
+}
+
+.form-section {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  background-color: #f9f9f9;
+}
+
+.form-section legend {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #6a0dad;
+  padding: 0 10px;
+  margin-left: -10px; /* Adjust legend position */
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column by default */
+  gap: 18px;
+}
+
+@media (min-width: 600px) { /* Two columns on larger screens */
+  .form-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+.form-group {
+  margin-bottom: 0; /* Removed margin-bottom from individual groups */
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1; /* Make this item span all columns */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+  font-size: 0.95em;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+select:focus {
+  border-color: #6a0dad; /* Purple */
+  box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.2);
+  outline: none;
+}
+
+.error-message {
+  color: #e74c3c; /* Red */
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  justify-content: center; /* Center buttons */
+}
+
+button {
+  flex: 1;
+  max-width: 200px; /* Limit button width */
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+}
+
+button[type="submit"] {
+  background-color: #6a0dad; /* Purple */
+  color: white;
+}
+
+button[type="submit"]:hover:not([disabled]) {
+  background-color: #520a82; /* Darker Purple */
+  transform: translateY(-2px);
+}
+
+button[type="submit"][disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+button[type="button"] { /* Reset button */
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+button[type="button"]:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}

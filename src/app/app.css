@@ -1,0 +1,25 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: #f5f7fa; /* Light background */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column; /* Stack vertically on small screens */
+  align-items: flex-start; /* Align items to the start */
+  gap: 40px;
+  padding: 40px;
+  min-height: 100vh;
+  /* Fishing themed background */
+  background-image: linear-gradient(to bottom right, #e0f2f7, #c1e0ed); /* Light blue to greenish-blue */
+  box-sizing: border-box;
+}
+
+@media (min-width: 992px) { /* Adjust for larger screens */
+  .app-container {
+    flex-direction: row; /* Side-by-side on larger screens */
+    justify-content: center; /* Center the two main components */
+    align-items: center; /* Vertically align them */
+  }
+}

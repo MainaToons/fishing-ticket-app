@@ -1,0 +1,127 @@
+.ticket-display-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ticket-card {
+  background-image: linear-gradient(135deg, #28a745 0%, #218838 100%); /* Green gradient for fishing theme */
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 400px; /* Adjusted max-width */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+.ticket-card::before, .ticket-card::after {
+  content: '';
+  position: absolute;
+  background-color: white;
+  opacity: 0.1;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.ticket-card::before {
+  width: 120px;
+  height: 120px;
+  top: -60px;
+  left: -60px;
+}
+
+.ticket-card::after {
+  width: 150px;
+  height: 150px;
+  bottom: -75px;
+  right: -75px;
+}
+
+.ticket-card * {
+  position: relative; /* Ensure content is above pseudo-elements */
+  z-index: 1;
+}
+
+h3 {
+  font-size: 2.2em;
+  margin-bottom: 25px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.ticket-details-section {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.ticket-details-section h4 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #e0ffe0; /* Lighter green */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 5px;
+}
+
+.ticket-details-section p {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+.ticket-details-section strong {
+  font-weight: bold;
+  margin-right: 10px;
+  flex-shrink: 0; /* Prevent strong from shrinking */
+}
+
+.ticket-details-section span {
+  text-align: right;
+  flex-grow: 1; /* Allow span to take remaining space */
+}
+
+.barcode {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block; /* To center it */
+}
+
+.barcode img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.thanks-message {
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin-top: 15px;
+}
+
+.no-ticket-message {
+  background-color: #f0f0f0;
+  color: #777;
+  padding: 40px;
+  border-radius: 10px;
+  border: 2px dashed #ccc;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  font-size: 1.1em;
+}

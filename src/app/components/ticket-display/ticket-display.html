@@ -1,0 +1,38 @@
+<div class="ticket-display-container">
+  <ng-container *ngIf="ticket; else noTicket">
+    <div class="ticket-card">
+      <h3>Fishing Ticket</h3>
+      <div class="ticket-details-section">
+        <h4>Personal Data</h4>
+        <p><strong>Name:</strong> <span>{{ ticket.name }}</span></p>
+        <p><strong>EGN:</strong> <span>{{ ticket.egn }}</span></p>
+        <p><strong>ID Card No.:</strong> <span>{{ ticket.idCardNumber }}</span></p>
+        <p><strong>Phone:</strong> <span>{{ ticket.phoneNumber }}</span></p>
+        <p><strong>Email:</strong> <span>{{ ticket.email }}</span></p>
+      </div>
+
+      <div class="ticket-details-section">
+        <h4>Ticket Details</h4>
+        <p><strong>Validity:</strong> <span>{{ ticket.validity }}</span></p>
+        <p><strong>Type:</strong> <span>{{ ticket.ticketType }}</span></p>
+      </div>
+
+      <div class="ticket-details-section">
+        <h4>Address</h4>
+        <p><strong>Country:</strong> <span>{{ ticket.country }}</span></p>
+        <p><strong>Region:</strong> <span>{{ ticket.region }}</span></p>
+        <p><strong>Municipality:</strong> <span>{{ ticket.municipality }}</span></p>
+        <p><strong>City:</strong> <span>{{ ticket.city }}</span></p>
+        <p><strong>Street:</strong> <span>{{ ticket.street }}</span></p>
+      </div>
+
+      <p class="thanks-message">Happy Fishing!</p>
+    </div>
+  </ng-container>
+
+  <ng-template #noTicket>
+    <div class="no-ticket-message">
+      <p>Fill out the form to generate your fishing ticket!</p>
+    </div>
+  </ng-template>
+</div>
